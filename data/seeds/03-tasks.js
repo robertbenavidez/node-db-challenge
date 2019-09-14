@@ -18,11 +18,6 @@ exports.seed = function(knex) {
       description: 'sharpen pen', 
       completed: true
     },
-    {
-      project_id: 4, 
-      description: 'sand the floor', 
-      completed: true
-    }
 
   ]);
     
