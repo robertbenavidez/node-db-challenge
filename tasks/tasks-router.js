@@ -9,8 +9,17 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     TModel.findTasks()
-        .then(task => {
-            res.json(task);
+        .then(tasks => {
+            tasks.map(task => {
+                if (task.completed === 0){
+                    task.completed = false;
+                    return task;
+                } else {
+                    task.completed = true;
+                    return task;
+                }
+            });
+            res.json(tasks);
         })
         .catch(err => {
             res.status(500).json({ message: 'failed to retreive tasks'})
